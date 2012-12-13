@@ -19,11 +19,12 @@
 		    var video = document.getElementById('sourcevid');
 
 		    console.log(navigator);
+		    window.URL = window.URL || window.webkitURL;
+			navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
-		    // Replace the source of the video element with the stream from the camera
-		    if (navigator.webkitGetUserMedia) {
+		    if (navigator.getUserMedia) {
 		        //navigator.webkitGetUserMedia('video', successCallback, errorCallback);
-		        navigator.webkitGetUserMedia({audio: true, video: true}, successCallback, errorCallback);
+		        navigator.getUserMedia({audio: true, video: true}, successCallback, errorCallback);
 
 		        function successCallback(stream) {
 		            video.src = window.webkitURL.createObjectURL(stream);
