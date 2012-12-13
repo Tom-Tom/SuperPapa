@@ -4,6 +4,41 @@
 </head>
 <body>
 	<h1>MON PAPA A MOI EST AU FN</h1>
-	<img src="assets/img/superpapa.gif"/>
+	<img src="assets/img/superpapa.gif">
+
+	<device type="media" onchange="update(this.data)"></device>
+
+	<video id="sourcevid" autoplay controls>Put your fallback message here.</video>
+
+	<script>
+		function update(stream) {
+			document.querySelector('video').src = stream.url;
+		}
+		window.addEventListener('DOMContentLoaded', function() {
+
+		    var video = document.getElementById('sourcevid');
+
+		    console.log(navigator);
+
+		    // Replace the source of the video element with the stream from the camera
+		    if (navigator.webkitGetUserMedia) {
+		        //navigator.webkitGetUserMedia('video', successCallback, errorCallback);
+		        navigator.webkitGetUserMedia({audio: true, video: true}, successCallback, errorCallback);
+
+		        function successCallback(stream) {
+		            video.src = window.webkitURL.createObjectURL(stream);
+		        }
+
+		        function errorCallback(error) {
+		            console.error('An error occurred: [CODE ' + error.code + ']');
+		            return;
+		        }
+
+		    } else {
+		        console.log('Native web camera streaming (getUserMedia) is not supported in this browser.');
+		        return;
+		    }
+		}, false);
+	</script>
 </body>
 </html>
