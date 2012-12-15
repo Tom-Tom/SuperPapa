@@ -1,45 +1,41 @@
-<html>
-<head>
-	<title>Super Papa</title>
-</head>
-<body>
-	<h1>MON PAPA A MOI EST AU FN</h1>
-	<img src="assets/img/superpapa.gif">
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+	    <meta charset="utf-8">
+		<title>Super Papa</title>
+	    <meta name="description" content="Super papa">
+	    <meta name="author" content="Hetic P2015 : CHANIOT, FORLINI, GUAN, SENKMAN, TROUDI, ZULFICAR">
+		<link type="text/css" rel="stylesheet" href="assets/css/reset.css" media="screen"/>
+		<link type="text/css" rel="stylesheet" href="assets/css/style.css" media="screen"/>
+	</head>
+	<body>
+		<header>
+			<h1>SUPER PAPA</h1>
+		</header>
+		<div class="content">
+			<img src="assets/img/enfant.jpg">
+			<!--<video id="sourcevid" autoplay controls>FALLBACK</video>-->
+			<a href="">S'inscrire</a>   
+			OU
+			<a id="connection" href="">Connection</a>   
+		</div>
+		<div id="temp_form" style="display: none;">
+			<form name="form_connection" method="GET" action="verif.php">
+				<input type="hidden" name="cid" value="52">
+				Pays : <select name="pays">
+					<option value="Argentine">Argentine</option>
+					<option value="France">France</option>
+					<option value="Senegal">Senegal</option>
+					<option value="Chine">Chine</option>
+				</select>
+				<input type="submit" name="Submit" value="Ok">
+			</form>
+		</div>
+		<footer>
 
-	<device type="media" onchange="update(this.data)"></device>
-
-	<video id="sourcevid" autoplay controls>Put your fallback message here.</video>
-
-	<script>
-		function update(stream) {
-			document.querySelector('video').src = stream.url;
-		}
-		window.addEventListener('DOMContentLoaded', function() {
-
-		    var video = document.getElementById('sourcevid');
-
-		    console.log(navigator);
-		    window.URL = window.URL || window.webkitURL;
-			navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
-		    if (navigator.getUserMedia) {
-		        //navigator.webkitGetUserMedia('video', successCallback, errorCallback);
-		        navigator.getUserMedia({audio: true, video: true}, successCallback, errorCallback);
-
-		        function successCallback(stream) {
-		            video.src = window.webkitURL.createObjectURL(stream);
-		        }
-
-		        function errorCallback(error) {
-		            console.error('An error occurred: [CODE ' + error.code + ']');
-		            return;
-		        }
-
-		    } else {
-		        console.log('Native web camera streaming (getUserMedia) is not supported in this browser.');
-		        return;
-		    }
-		}, false);
-	</script>
-</body>
+		</footer>
+	</body>
+   	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/jquery.lightbox_me.js"></script>
 </html>
