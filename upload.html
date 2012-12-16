@@ -17,5 +17,16 @@
 		<input type="button" value="Stop" id="stopButton"/>
 		<span id="timeLeft">2:30</span>
 	</div>
+	<div id="div_form_video">
+		<form id="form_video" method="post" action="script-upload.php">
+			<label for="titre">Titre : </label>
+			<input type="text" name="titre" maxlength="100" /><br/>
+			<label for="description">Description : </label>
+			<textarea name="description" maxlength="500"></textarea><br/>
+			<input type="hidden" name="id" id="input_id" />
+			<input type="submit" />
+		</form>
+	</div>
+	
 </body>
 </html>

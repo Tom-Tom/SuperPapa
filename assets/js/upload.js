@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	var id = uniqid();
+	$('#input_id').val(id);
 	$('#recordZone').hide();//On cache les boutons d'enregistrement au départ
+	$('#div_form_video').hide();
 	
 	$("#webcam").scriptcam({ 
 		appID: '363F9817-54',
@@ -22,11 +24,6 @@ $(document).ready(function() {
 	$("#stopButton").click(function() {//Bouton STOP ecouteur d'evenement
 		$.scriptcam.closeCamera();
 		$('#recordZone').hide();//Enregistrement fini, on cache les boutons d'enregistrement
-		
-		//On envoye les donnees au script php pour copier la vidéo sur notre serveur
-		$.post('script-upload.php', {id: id},function(data){
-			alert(data);
-		});
 	});
 });
 
@@ -36,6 +33,7 @@ $(document).ready(function() {
 function enableRecord() {//Fonction lancee lorsque l'utilisateur a accepté l'invit flash
 	$('#recordZone').show();
 	$('#stopButton').hide();
+	$('#div_form_video').show();
 }
 
 function remaining(value) {//Fonction qui génère le temps restant maximum
